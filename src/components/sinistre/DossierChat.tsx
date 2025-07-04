@@ -6,9 +6,16 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { MessageCircle, Send, Sparkles, User, Bot } from "lucide-react";
 
+interface Message {
+  id: number;
+  type: "bot" | "user";
+  content: string;
+  timestamp: string;
+}
+
 export const DossierChat = () => {
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
       type: "bot" as const,
@@ -27,7 +34,7 @@ export const DossierChat = () => {
     if (!message.trim()) return;
 
     // Ajouter le message utilisateur
-    const userMessage = {
+    const userMessage: Message = {
       id: messages.length + 1,
       type: "user" as const,
       content: message,
@@ -35,7 +42,7 @@ export const DossierChat = () => {
     };
 
     // Simuler une réponse de l'IA
-    const botResponse = {
+    const botResponse: Message = {
       id: messages.length + 2,
       type: "bot" as const,
       content: "Je traite votre demande... Voici les informations disponibles dans le dossier.",
