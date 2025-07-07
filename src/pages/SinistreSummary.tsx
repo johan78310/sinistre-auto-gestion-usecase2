@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -98,13 +97,8 @@ const SinistreSummary = () => {
             </TabsList>
             
             <TabsContent value="synthese" className="mt-6">
-              {/* Prochaines actions - toute la largeur */}
-              <div className="mb-6">
-                <NextBestActions />
-              </div>
-
               {/* Zone principale - Deux colonnes */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
                 {/* Colonne de gauche */}
                 <div className="space-y-6">
                   <CriticalityIndicator level={dossierData.criticite} />
@@ -116,6 +110,9 @@ const SinistreSummary = () => {
                   <DossierChat />
                 </div>
               </div>
+
+              {/* Prochaines actions - en bas de l'écran */}
+              <NextBestActions />
             </TabsContent>
             
             <TabsContent value="documents" className="mt-6">
