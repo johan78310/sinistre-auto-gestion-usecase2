@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -8,27 +7,27 @@ export const NextBestActions = () => {
   const actions = [
     {
       id: 1,
-      title: "Relancer le garage Dupont",
-      description: "Devis en attente depuis 2 jours",
+      title: "Faire un mail à l'assuré",
+      description: "Envoyer le rapport d'expertise finalisé",
       priority: "high",
-      icon: Phone,
-      estimatedTime: "5 min"
-    },
-    {
-      id: 2,
-      title: "Envoyer rapport à l'assuré",
-      description: "Rapport d'expertise finalisé",
-      priority: "medium",
       icon: Mail,
       estimatedTime: "2 min"
     },
     {
+      id: 2,
+      title: "Appeler l'assuré",
+      description: "Point de situation sur le dossier",
+      priority: "medium",
+      icon: Phone,
+      estimatedTime: "10 min"
+    },
+    {
       id: 3,
-      title: "Mettre à jour le dossier",
-      description: "Saisir les dernières informations",
+      title: "Relancer l'expert",
+      description: "Devis en attente depuis 2 jours",
       priority: "low",
       icon: FileText,
-      estimatedTime: "10 min"
+      estimatedTime: "5 min"
     }
   ];
 

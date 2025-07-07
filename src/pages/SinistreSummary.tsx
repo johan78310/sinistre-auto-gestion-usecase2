@@ -98,13 +98,17 @@ const SinistreSummary = () => {
             </TabsList>
             
             <TabsContent value="synthese" className="mt-6">
+              {/* Prochaines actions - toute la largeur */}
+              <div className="mb-6">
+                <NextBestActions />
+              </div>
+
               {/* Zone principale - Deux colonnes */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Colonne de gauche */}
                 <div className="space-y-6">
                   <CriticalityIndicator level={dossierData.criticite} />
                   <EventTimeline />
-                  <NextBestActions />
                 </div>
 
                 {/* Colonne de droite */}
