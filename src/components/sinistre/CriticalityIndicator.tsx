@@ -26,8 +26,8 @@ export const CriticalityIndicator = ({ level }: CriticalityIndicatorProps) => {
           bgColor: "bg-orange-50",
           borderColor: "border-orange-200",
           emoji: "🟠",
-          title: "Attention",
-          description: "Risque détecté (retard, problème météo, garage saturé...)"
+          title: "Risque détecté",
+          description: "Plusieurs manquements ont été identifiés entre les délais d'expertises et la fin des réparations"
         };
       case "red":
         return {
