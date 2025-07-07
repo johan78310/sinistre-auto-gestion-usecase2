@@ -19,7 +19,25 @@ export const DossierChat = () => {
     {
       id: 1,
       type: "bot" as const,
-      content: "Bonjour ! Je suis votre assistant IA pour ce dossier sinistre. Comment puis-je vous aider ?",
+      content: `📋 **ANALYSE DU DOSSIER SINISTRE #SIN-2024-001234**
+
+**PROBLÈMES IDENTIFIÉS :**
+
+🔸 **Retard dans l'expertise** - L'expert n'a pas encore fourni le devis définitif (en attente depuis 2 jours)
+
+🔸 **Communication insuffisante** - L'assuré M. Dupont n'a pas été informé de l'avancement depuis l'ouverture du dossier
+
+🔸 **Délai de traitement** - Le dossier approche la limite des 10 jours réglementaires sans validation finale
+
+**PRÉCONISATIONS DE REMÉDIATION :**
+
+✅ **1. Relance immédiate de l'expert** - Contactez l'expert sous 24h pour obtenir le rapport d'expertise et le devis final
+
+✅ **2. Communication proactive avec l'assuré** - Envoyez un mail de mise à jour pour rassurer sur l'avancement et maintenir la relation client
+
+✅ **3. Planification des réparations** - Une fois l'expertise validée, accompagnez l'assuré dans le choix du garage agréé pour accélérer le processus
+
+**Niveau de criticité actuel :** 🟠 MOYEN - Action requise sous 48h`,
       timestamp: "14:30"
     }
   ]);
@@ -93,7 +111,7 @@ export const DossierChat = () => {
                     ? 'bg-blue-500 text-white' 
                     : 'bg-white border text-gray-900'
                 }`}>
-                  <p className="text-sm">{msg.content}</p>
+                  <p className="text-sm whitespace-pre-line">{msg.content}</p>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">{msg.timestamp}</p>
               </div>
