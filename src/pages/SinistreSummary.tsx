@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Separator } from "@/components/ui/separator";
 import { Header } from "@/components/layout/Header";
@@ -11,12 +10,12 @@ import { EventTimeline } from "@/components/sinistre/EventTimeline";
 import { NextBestActions } from "@/components/sinistre/NextBestActions";
 import { DossierChat } from "@/components/sinistre/DossierChat";
 import { DocumentsDossier } from "@/components/sinistre/DocumentsDossier";
-import { Car, User, FileText, Calendar, Megaphone, Home, ExternalLink, ChevronDown, ChevronRight, Users, Factory } from "lucide-react";
+import { Car, User, FileText, Calendar, Megaphone, Home, ExternalLink, ChevronDown, ChevronRight, Users, Factory, BarChart3, FolderOpen } from "lucide-react";
 
 const SinistreSummary = () => {
   const [showInfosSection, setShowInfosSection] = useState(false);
+  const [activeSection, setActiveSection] = useState("synthese");
 
-  // Données d'exemple - à remplacer par des données réelles
   const dossierData = {
     numeroSinistre: "170492218073",
     numeroPortefeuille: "0006052544",
@@ -101,13 +100,31 @@ const SinistreSummary = () => {
     },
   ];
 
+  const sections = [
+    {
+      id: "synthese",
+      title: "Synthèse Dossier",
+      description: "Vue d'ensemble du dossier avec timeline et actions",
+      icon: BarChart3,
+      color: "bg-blue-50 border-blue-200 hover:bg-blue-100",
+      activeColor: "bg-blue-100 border-blue-300"
+    },
+    {
+      id: "documents",
+      title: "Documents du dossier",
+      description: "Tous les documents liés au sinistre",
+      icon: FolderOpen,
+      color: "bg-green-50 border-green-200 hover:bg-green-100",
+      activeColor: "bg-green-100 border-green-300"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
       
       <div className="p-6">
         <div className="max-w-7xl mx-auto space-y-6">
-          {/* En-tête du dossier */}
           <Card>
             <CardHeader>
               <div className="flex items-center justify-between">
@@ -130,7 +147,6 @@ const SinistreSummary = () => {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Informations Assuré */}
                 <div className="space-y-3">
                   <div className="flex items-center text-lg font-semibold text-gray-800">
                     <User className="w-5 h-5 mr-2 text-blue-600" />
@@ -145,7 +161,6 @@ const SinistreSummary = () => {
                   </div>
                 </div>
 
-                {/* Informations Véhicule */}
                 <div className="space-y-3">
                   <div className="flex items-center text-lg font-semibold text-gray-800">
                     <Car className="w-5 h-5 mr-2 text-green-600" />
@@ -158,7 +173,6 @@ const SinistreSummary = () => {
                   </div>
                 </div>
 
-                {/* Autres Sinistres en cours */}
                 <div className="space-y-3">
                   <div className="flex items-center text-lg font-semibold text-gray-800">
                     <Home className="w-5 h-5 mr-2 text-orange-600" />
@@ -192,7 +206,6 @@ const SinistreSummary = () => {
             </CardContent>
           </Card>
 
-          {/* Bloc Informations Client unifié */}
           <Card>
             <CardHeader>
               <div className="flex items-center justify-between">
@@ -218,7 +231,6 @@ const SinistreSummary = () => {
             {showInfosSection && (
               <CardContent>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                  {/* Zone Notifications */}
                   <div className="space-y-3">
                     <h4 className="flex items-center font-medium text-gray-800 mb-3">
                       <Megaphone className="w-4 h-4 mr-2 text-purple-600" />
@@ -238,7 +250,6 @@ const SinistreSummary = () => {
                     </div>
                   </div>
 
-                  {/* Zone Relations */}
                   <div className="space-y-3">
                     <h4 className="font-medium text-gray-800 mb-3">Relations</h4>
                     <div className="space-y-2 text-sm">
@@ -258,11 +269,9 @@ const SinistreSummary = () => {
                     </div>
                   </div>
 
-                  {/* Zone Situation du foyer */}
                   <div className="space-y-3">
                     <h4 className="font-medium text-gray-800 mb-3">Situation du foyer</h4>
                     <div className="space-y-4">
-                      {/* Tableau complet restauré */}
                       <div className="overflow-hidden">
                         <Table className="text-xs">
                           <TableHeader>
@@ -315,7 +324,6 @@ const SinistreSummary = () => {
                         </Table>
                       </div>
 
-                      {/* Informations financières */}
                       <div className="space-y-2 text-xs">
                         <p><span className="font-medium">Cotisations -</span> 1689 €</p>
                         <p><span className="font-medium">En cours -</span> -€</p>
@@ -338,14 +346,49 @@ const SinistreSummary = () => {
             )}
           </Card>
 
-          {/* Système d'onglets */}
-          <Tabs defaultValue="synthese" className="w-full">
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="synthese">Synthèse Dossier</TabsTrigger>
-              <TabsTrigger value="documents">Documents du dossier</TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="synthese" className="mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            {sections.map((section) => {
+              const IconComponent = section.icon;
+              const isActive = activeSection === section.id;
+              return (
+                <Card 
+                  key={section.id}
+                  className={`cursor-pointer transition-all duration-200 ${
+                    isActive ? section.activeColor : section.color
+                  }`}
+                  onClick={() => setActiveSection(section.id)}
+                >
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className={`p-3 rounded-lg ${isActive ? 'bg-white shadow-sm' : 'bg-white/50'}`}>
+                        <IconComponent className={`w-6 h-6 ${
+                          isActive ? 'text-blue-600' : 'text-gray-600'
+                        }`} />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className={`font-semibold text-lg ${
+                          isActive ? 'text-gray-900' : 'text-gray-700'
+                        }`}>
+                          {section.title}
+                        </h3>
+                        <p className={`text-sm mt-1 ${
+                          isActive ? 'text-gray-600' : 'text-gray-500'
+                        }`}>
+                          {section.description}
+                        </p>
+                      </div>
+                      {isActive && (
+                        <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+          
+          {activeSection === "synthese" && (
+            <div className="space-y-6">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
                 <div className="space-y-6">
                   <CriticalityIndicator level={dossierData.criticite} />
@@ -356,12 +399,12 @@ const SinistreSummary = () => {
                 </div>
               </div>
               <NextBestActions />
-            </TabsContent>
-            
-            <TabsContent value="documents" className="mt-6">
-              <DocumentsDossier />
-            </TabsContent>
-          </Tabs>
+            </div>
+          )}
+          
+          {activeSection === "documents" && (
+            <DocumentsDossier />
+          )}
         </div>
       </div>
     </div>
