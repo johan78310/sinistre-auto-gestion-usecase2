@@ -68,10 +68,12 @@ Votre Compagnie d'Assurance`;
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center">
-          <ArrowRight className="w-5 h-5 mr-2 text-indigo-600" />
-          Prochaines actions suggérées par l'IA
-        </CardTitle>
+        <div className="bg-purple-100 border border-purple-200 rounded-lg p-3">
+          <CardTitle className="flex items-center text-purple-700">
+            <Sparkles className="w-5 h-5 mr-2 text-purple-600" />
+            Prochaines actions suggérées par l'IA
+          </CardTitle>
+        </div>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
