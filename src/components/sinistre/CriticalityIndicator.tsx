@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertTriangle, CheckCircle } from "lucide-react";
 
@@ -7,7 +8,7 @@ interface CriticalityIndicatorProps {
 
 const TrafficLight = ({ activeColor }: { activeColor: "green" | "orange" | "red" }) => {
   return (
-    <div className="flex items-center space-x-2 bg-white border border-gray-200 rounded-md px-3 py-2 shadow-sm">
+    <div className="flex items-center space-x-2">
       <div className={`w-4 h-4 rounded-full border-2 ${activeColor === 'red' ? 'bg-red-500 border-red-500' : 'bg-gray-100 border-gray-300'}`}></div>
       <div className={`w-4 h-4 rounded-full border-2 ${activeColor === 'orange' ? 'bg-orange-500 border-orange-500' : 'bg-gray-100 border-gray-300'}`}></div>
       <div className={`w-4 h-4 rounded-full border-2 ${activeColor === 'green' ? 'bg-green-500 border-green-500' : 'bg-gray-100 border-gray-300'}`}></div>
@@ -66,10 +67,10 @@ export const CriticalityIndicator = ({ level }: CriticalityIndicatorProps) => {
         <div className="space-y-2">
           {level === "orange" ? (
             <div className="flex items-center space-x-3">
-              <TrafficLight activeColor="orange" />
               <h3 className={`text-xl font-bold ${config.color}`}>
                 {config.title}
               </h3>
+              <TrafficLight activeColor="orange" />
             </div>
           ) : (
             <h3 className={`text-xl font-bold ${config.color}`}>
