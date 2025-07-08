@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -272,7 +273,7 @@ const SinistreSummary = () => {
                   <div className="space-y-3">
                     <h4 className="font-medium text-gray-800 mb-3">Situation du foyer</h4>
                     <div className="space-y-4">
-                      {/* Tableau compact */}
+                      {/* Tableau complet restauré */}
                       <div className="overflow-hidden">
                         <Table className="text-xs">
                           <TableHeader>
@@ -284,7 +285,7 @@ const SinistreSummary = () => {
                             </TableRow>
                           </TableHeader>
                           <TableBody>
-                            {foyerData.slice(0, 4).map((row, index) => (
+                            {foyerData.map((row, index) => (
                               <TableRow key={index} className="h-6">
                                 <TableCell className={`py-0.5 text-xs ${row.bold ? "font-bold" : ""}`}>
                                   {row.category.length > 15 ? row.category.substring(0, 15) + '...' : row.category}
