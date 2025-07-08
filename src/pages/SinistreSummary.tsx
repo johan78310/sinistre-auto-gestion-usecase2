@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Header } from "@/components/layout/Header";
 import { CriticalityIndicator } from "@/components/sinistre/CriticalityIndicator";
@@ -9,7 +10,7 @@ import { EventTimeline } from "@/components/sinistre/EventTimeline";
 import { NextBestActions } from "@/components/sinistre/NextBestActions";
 import { DossierChat } from "@/components/sinistre/DossierChat";
 import { DocumentsDossier } from "@/components/sinistre/DocumentsDossier";
-import { Car, User, FileText, Calendar, Megaphone } from "lucide-react";
+import { Car, User, FileText, Calendar, Megaphone, Home, ExternalLink } from "lucide-react";
 
 const SinistreSummary = () => {
   // Données d'exemple - à remplacer par des données réelles
@@ -62,7 +63,7 @@ const SinistreSummary = () => {
               </div>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 {/* Informations Assuré */}
                 <div className="space-y-3">
                   <div className="flex items-center text-lg font-semibold text-gray-800">
@@ -110,6 +111,37 @@ const SinistreSummary = () => {
                     <p><span className="font-medium">Option zéro papier activée:</span> 3 contrats</p>
                   </div>
                 </div>
+
+                {/* Autres Sinistres en cours */}
+                <div className="space-y-3">
+                  <div className="flex items-center text-lg font-semibold text-gray-800">
+                    <Home className="w-5 h-5 mr-2 text-orange-600" />
+                    Autres Sinistres en cours
+                  </div>
+                  <div className="space-y-2 text-sm">
+                    <p><span className="font-medium">Sinistre habitation:</span> n°00000187879898</p>
+                    <p><span className="font-medium">Survenu le:</span> 10/04/25</p>
+                    <p><span className="font-medium">Dommages:</span> de type xyz</p>
+                    <p><span className="font-medium">N° contrat:</span> 0000068772R5373</p>
+                    <p><span className="font-medium">Assuré:</span> Marc DUBOIS</p>
+                    <div className="flex flex-col gap-2 mt-3">
+                      <Button 
+                        variant="link" 
+                        className="p-0 h-auto text-blue-600 hover:text-blue-800 justify-start"
+                      >
+                        <ExternalLink className="w-3 h-3 mr-1" />
+                        Plus de détail
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        className="text-xs"
+                      >
+                        Afficher le sinistre
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -122,21 +154,15 @@ const SinistreSummary = () => {
             </TabsList>
             
             <TabsContent value="synthese" className="mt-6">
-              {/* Zone principale - Deux colonnes */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                {/* Colonne de gauche */}
                 <div className="space-y-6">
                   <CriticalityIndicator level={dossierData.criticite} />
                   <EventTimeline />
                 </div>
-
-                {/* Colonne de droite */}
                 <div>
                   <DossierChat />
                 </div>
               </div>
-
-              {/* Prochaines actions - en bas de l'écran */}
               <NextBestActions />
             </TabsContent>
             
