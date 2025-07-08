@@ -1,5 +1,4 @@
 
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -32,9 +31,9 @@ export const NextBestActions = () => {
     }
   ];
 
-  const emailContent = `Objet : Rapport d'expertise - Dossier Sinistre SIN-2024-001234
-
-Monsieur Dupont,
+  const emailSubject = "Rapport d'expertise - Dossier Sinistre SIN-2024-001234";
+  
+  const emailContent = `Monsieur Dupont,
 
 Suite au sinistre survenu le 15/03/2024 concernant votre véhicule Peugeot 308 immatriculé AB-123-CD, nous avons le plaisir de vous informer que l'expertise de votre véhicule a été finalisée.
 
@@ -63,7 +62,7 @@ Votre Compagnie d'Assurance`;
   };
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText(emailContent);
+    navigator.clipboard.writeText(`Objet: ${emailSubject}\n\n${emailContent}`);
   };
 
   return (
@@ -118,13 +117,27 @@ Votre Compagnie d'Assurance`;
                   <div className="mt-4 pt-4 border-t">
                     <div className="bg-gray-50 rounded-lg p-4">
                       <h5 className="font-semibold text-gray-900 mb-3">Modèle de mail</h5>
-                      <div className="flex items-center text-sm text-purple-700 mb-3">
+                      <div className="flex items-center text-sm text-gray-700 mb-3">
                         <Sparkles className="w-4 h-4 mr-2 text-purple-600" />
                         Modèle généré par l'IA d'après les informations du dossier
                       </div>
-                      <div className="bg-white rounded border p-4 text-sm text-gray-700 whitespace-pre-line font-mono">
-                        {emailContent}
+                      
+                      {/* Zone Objets */}
+                      <div className="mb-4">
+                        <h6 className="font-medium text-gray-900 mb-2">Objets</h6>
+                        <div className="bg-white rounded border p-3 text-sm text-gray-700 font-mono">
+                          {emailSubject}
+                        </div>
                       </div>
+                      
+                      {/* Zone Contenu du mail */}
+                      <div className="mb-4">
+                        <h6 className="font-medium text-gray-900 mb-2">Contenu du mail</h6>
+                        <div className="bg-white rounded border p-4 text-sm text-gray-700 whitespace-pre-line font-mono">
+                          {emailContent}
+                        </div>
+                      </div>
+                      
                       <div className="flex justify-end mt-3">
                         <Button 
                           size="sm" 
@@ -146,4 +159,3 @@ Votre Compagnie d'Assurance`;
     </Card>
   );
 };
-
