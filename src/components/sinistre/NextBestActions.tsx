@@ -1,4 +1,5 @@
 
+
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -105,8 +106,7 @@ Votre Compagnie d'Assurance`;
                   {!showContent && (
                     <Button 
                       size="sm" 
-                      variant="outline" 
-                      className="ml-2"
+                      className="ml-2 bg-blue-600 hover:bg-blue-700 text-white"
                       onClick={() => handleActionClick(action.id)}
                     >
                       Faire
@@ -146,3 +146,4 @@ Votre Compagnie d'Assurance`;
     </Card>
   );
 };
+
