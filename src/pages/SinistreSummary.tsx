@@ -63,7 +63,7 @@ const SinistreSummary = () => {
               </div>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Informations Assuré */}
                 <div className="space-y-3">
                   <div className="flex items-center text-lg font-semibold text-gray-800">
@@ -89,26 +89,6 @@ const SinistreSummary = () => {
                     <p><span className="font-medium">Véhicule:</span> {dossierData.vehicule.marque} {dossierData.vehicule.modele}</p>
                     <p><span className="font-medium">Immatriculation:</span> {dossierData.vehicule.immatriculation}</p>
                     <p><span className="font-medium">Année:</span> {dossierData.vehicule.annee}</p>
-                  </div>
-                </div>
-
-                {/* Notifications */}
-                <div className="space-y-3">
-                  <div className="flex items-center text-lg font-semibold text-gray-800">
-                    <Megaphone className="w-5 h-5 mr-2 text-purple-600" />
-                    Notifications
-                  </div>
-                  <div className="space-y-2 text-sm">
-                    <p className="flex items-center">
-                      <span className="font-medium">Dernier avis client:</span> 
-                      <span className="ml-1">5/5</span>
-                      <div className="w-2 h-2 bg-green-500 rounded-full ml-2"></div>
-                    </p>
-                    <p><span className="font-medium">Connexion Espace client:</span> inconnu</p>
-                    <p><span className="font-medium">Connexion App AXA Mobile:</span> inconnu</p>
-                    <p><span className="font-medium">Dernière mise à jour:</span> 20/05/25 par Compagnie</p>
-                    <p><span className="font-medium">Délégation CSE Sinistres:</span> oui</p>
-                    <p><span className="font-medium">Option zéro papier activée:</span> 3 contrats</p>
                   </div>
                 </div>
 
@@ -142,6 +122,30 @@ const SinistreSummary = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Bloc Notifications séparé */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center text-lg font-semibold text-gray-800">
+                <Megaphone className="w-5 h-5 mr-2 text-purple-600" />
+                Notifications et Informations Client
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-2 text-sm">
+                <p className="flex items-center">
+                  <span className="font-medium">Dernier avis client:</span> 
+                  <span className="ml-1">5/5</span>
+                  <div className="w-2 h-2 bg-green-500 rounded-full ml-2"></div>
+                </p>
+                <p><span className="font-medium">Connexion Espace client:</span> inconnu</p>
+                <p><span className="font-medium">Connexion App AXA Mobile:</span> inconnu</p>
+                <p><span className="font-medium">Dernière mise à jour:</span> 20/05/25 par Compagnie</p>
+                <p><span className="font-medium">Délégation CSE Sinistres:</span> oui</p>
+                <p><span className="font-medium">Option zéro papier activée:</span> 3 contrats</p>
               </div>
             </CardContent>
           </Card>
