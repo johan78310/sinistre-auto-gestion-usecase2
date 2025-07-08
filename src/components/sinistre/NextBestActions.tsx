@@ -55,8 +55,7 @@ Votre Conseiller AXA`);
   };
 
   const handleSendEmail = () => {
-    console.log(`Objet: ${emailSubject}\n\n${emailContent}`);
-    // Logic to send email would go here
+    window.open('https://www.figma.com/proto/tHHfyWYuKSjfY8RpWSI68f/Auto---Use-case-2?node-id=46-5&t=KLl5P2nfRvKiOYht-0&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=14%3A29&hide-ui=1', '_blank');
   };
 
   return (
