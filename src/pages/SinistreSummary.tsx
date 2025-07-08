@@ -39,14 +39,66 @@ const SinistreSummary = () => {
   };
 
   const foyerData = [
-    { category: "Auto/Moto", bold: true, contrats: "2", opportunites: "1", dossiers: "0" },
-    { category: "Habitation", bold: false, contrats: "1", opportunites: "0", dossiers: "1" },
-    { category: "Prév. & dépendance", bold: true, contrats: "0", opportunites: "2", dossiers: "0" },
-    { category: "Santé", bold: false, contrats: "1", opportunites: "0", dossiers: "0" },
-    { category: "Banque - Crédit", bold: false, contrats: "0", opportunites: "1", dossiers: "0" },
-    { category: "Epargne & retraite", bold: false, contrats: "1", opportunites: "0", dossiers: "0" },
-    { category: "Famille - Loisir", bold: false, contrats: "0", opportunites: "0", dossiers: "0" },
-    { category: "Autre", bold: true, contrats: "0", opportunites: "0", dossiers: "0" },
+    { 
+      category: "Auto/Moto", 
+      bold: true, 
+      contrats: "2", 
+      opportunites: "-", 
+      dossiers: "-",
+      contratsIcon: { color: "bg-green-500", number: "2" }
+    },
+    { 
+      category: "Habitation", 
+      bold: false, 
+      contrats: "1", 
+      opportunites: "-", 
+      dossiers: "1",
+      dossiersIcon: { color: "bg-yellow-500", number: "1" }
+    },
+    { 
+      category: "Prév. & dépendance", 
+      bold: true, 
+      contrats: "-", 
+      opportunites: "2", 
+      dossiers: "-",
+      contratsIcon: { color: "bg-green-500", number: "1" }
+    },
+    { 
+      category: "Santé", 
+      bold: false, 
+      contrats: "1", 
+      opportunites: "-", 
+      dossiers: "-"
+    },
+    { 
+      category: "Banque - Crédit", 
+      bold: false, 
+      contrats: "-", 
+      opportunites: "1", 
+      dossiers: "-"
+    },
+    { 
+      category: "Epargne & retraite", 
+      bold: false, 
+      contrats: "1", 
+      opportunites: "-", 
+      dossiers: "-"
+    },
+    { 
+      category: "Famille - Loisir", 
+      bold: false, 
+      contrats: "-", 
+      opportunites: "-", 
+      dossiers: "-"
+    },
+    { 
+      category: "Autre", 
+      bold: true, 
+      contrats: "-", 
+      opportunites: "-", 
+      dossiers: "-",
+      opportunitesIcon: { color: "bg-orange-500", number: "1" }
+    },
   ];
 
   return (
@@ -226,9 +278,36 @@ const SinistreSummary = () => {
                               <TableCell className={row.bold ? "font-bold" : ""}>
                                 {row.category}
                               </TableCell>
-                              <TableCell className="text-center">{row.contrats}</TableCell>
-                              <TableCell className="text-center">{row.opportunites}</TableCell>
-                              <TableCell className="text-center">{row.dossiers}</TableCell>
+                              <TableCell className="text-center">
+                                <div className="flex items-center justify-center gap-2">
+                                  {row.contrats}
+                                  {row.contratsIcon && (
+                                    <div className={`w-5 h-5 ${row.contratsIcon.color} rounded-full flex items-center justify-center text-white text-xs font-bold`}>
+                                      {row.contratsIcon.number}
+                                    </div>
+                                  )}
+                                </div>
+                              </TableCell>
+                              <TableCell className="text-center">
+                                <div className="flex items-center justify-center gap-2">
+                                  {row.opportunites}
+                                  {row.opportunitesIcon && (
+                                    <div className={`w-5 h-5 ${row.opportunitesIcon.color} rounded-full flex items-center justify-center text-white text-xs font-bold`}>
+                                      {row.opportunitesIcon.number}
+                                    </div>
+                                  )}
+                                </div>
+                              </TableCell>
+                              <TableCell className="text-center">
+                                <div className="flex items-center justify-center gap-2">
+                                  {row.dossiers}
+                                  {row.dossiersIcon && (
+                                    <div className={`w-5 h-5 ${row.dossiersIcon.color} rounded-full flex items-center justify-center text-white text-xs font-bold`}>
+                                      {row.dossiersIcon.number}
+                                    </div>
+                                  )}
+                                </div>
+                              </TableCell>
                             </TableRow>
                           ))}
                         </TableBody>
