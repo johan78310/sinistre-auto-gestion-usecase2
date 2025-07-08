@@ -1,9 +1,10 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { ArrowRight, Phone, Mail, FileText, Clock, Copy, Sparkles } from "lucide-react";
+import { ArrowRight, Phone, Mail, FileText, Clock, Send, Sparkles } from "lucide-react";
 
 export const NextBestActions = () => {
   const [showEmailContent, setShowEmailContent] = useState(false);
@@ -60,8 +61,9 @@ Votre Compagnie d'Assurance`);
     }
   };
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(`Objet: ${emailSubject}\n\n${emailContent}`);
+  const handleSendEmail = () => {
+    console.log(`Objet: ${emailSubject}\n\n${emailContent}`);
+    // Logic to send email would go here
   };
 
   return (
@@ -145,11 +147,11 @@ Votre Compagnie d'Assurance`);
                       <div className="flex justify-end mt-3">
                         <Button 
                           size="sm" 
-                          onClick={handleCopyEmail}
+                          onClick={handleSendEmail}
                           className="flex items-center gap-2"
                         >
-                          <Copy className="w-4 h-4" />
-                          Générer l'email
+                          <Send className="w-4 h-4" />
+                          Envoyer le mail
                         </Button>
                       </div>
                     </div>
