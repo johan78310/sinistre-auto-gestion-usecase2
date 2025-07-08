@@ -117,7 +117,7 @@ Votre Compagnie d'Assurance`;
                 {showContent && (
                   <div className="mt-4 pt-4 border-t">
                     <div className="bg-gray-50 rounded-lg p-4">
-                      <h5 className="font-semibold text-gray-900 mb-3">Contenu du mail :</h5>
+                      <h5 className="font-semibold text-gray-900 mb-3">Modèle de mail</h5>
                       <div className="bg-white rounded border p-4 text-sm text-gray-700 whitespace-pre-line font-mono">
                         {emailContent}
                       </div>
