@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Phone, Mail, FileText, Clock, Copy } from "lucide-react";
 
 export const NextBestActions = () => {
@@ -11,25 +10,22 @@ export const NextBestActions = () => {
   const actions = [
     {
       id: 1,
-      title: "Faire un mail à l'assuré",
-      description: "Envoyer le rapport d'expertise finalisé",
-      priority: "high",
+      title: "Adresser un mail à l'assuré",
+      description: "Indiquer à l'assuré les prochaines étapes - assuré éligible à une souplesse",
       icon: Mail,
       estimatedTime: "2 min"
     },
     {
       id: 2,
-      title: "Appeler l'assuré",
-      description: "Point de situation sur le dossier",
-      priority: "medium",
+      title: "Déclarer un incident prestataire",
+      description: "Délai dépôt rapport",
       icon: Phone,
-      estimatedTime: "10 min"
+      estimatedTime: "4 min"
     },
     {
       id: 3,
-      title: "Relancer l'expert",
-      description: "Devis en attente depuis 2 jours",
-      priority: "low",
+      title: "Contacter le réparateur",
+      description: "suivi des réparations",
       icon: FileText,
       estimatedTime: "5 min"
     }
@@ -59,34 +55,8 @@ Cordialement,
 Service Sinistres
 Votre Compagnie d'Assurance`;
 
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case "high":
-        return "bg-red-100 text-red-800 border-red-200";
-      case "medium":
-        return "bg-orange-100 text-orange-800 border-orange-200";
-      case "low":
-        return "bg-green-100 text-green-800 border-green-200";
-      default:
-        return "bg-gray-100 text-gray-800 border-gray-200";
-    }
-  };
-
-  const getPriorityLabel = (priority: string) => {
-    switch (priority) {
-      case "high":
-        return "Urgent";
-      case "medium":
-        return "Moyen";
-      case "low":
-        return "Faible";
-      default:
-        return "Normal";
-    }
-  };
-
   const handleActionClick = (actionId: number) => {
-    if (actionId === 1) { // Faire un mail à l'assuré
+    if (actionId === 1) { // Adresser un mail à l'assuré
       setShowEmailContent(true);
     }
   };
@@ -100,7 +70,7 @@ Votre Compagnie d'Assurance`;
       <CardHeader>
         <CardTitle className="flex items-center">
           <ArrowRight className="w-5 h-5 mr-2 text-indigo-600" />
-          Prochaines Actions
+          Prochaines actions suggérées par l'IA
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -125,12 +95,6 @@ Votre Compagnie d'Assurance`;
                         {action.description}
                       </p>
                       <div className="flex items-center space-x-2">
-                        <Badge 
-                          className={`text-xs ${getPriorityColor(action.priority)}`}
-                          variant="outline"
-                        >
-                          {getPriorityLabel(action.priority)}
-                        </Badge>
                         <div className="flex items-center text-xs text-gray-500">
                           <Clock className="w-3 h-3 mr-1" />
                           {action.estimatedTime}
