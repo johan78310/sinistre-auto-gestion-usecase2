@@ -1,13 +1,13 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, FileText, Wrench, Phone, CheckCircle } from "lucide-react";
+import { Calendar, FileText, Wrench, Phone, CheckCircle, AlertTriangle, X } from "lucide-react";
 
 export const EventTimeline = () => {
   const events = [
     {
       id: 1,
-      date: "15/03/2024 09:30",
+      date: "15/01/2025 09:30",
       title: "Ouverture du dossier",
       description: "Déclaration de sinistre reçue",
       icon: FileText,
@@ -16,7 +16,7 @@ export const EventTimeline = () => {
     },
     {
       id: 2,
-      date: "16/03/2024 14:15",
+      date: "18/02/2025 14:15",
       title: "Expertise programmée",
       description: "RDV fixé avec l'expert",
       icon: Calendar,
@@ -25,7 +25,34 @@ export const EventTimeline = () => {
     },
     {
       id: 3,
-      date: "18/03/2024 10:00",
+      date: "25/02/2025 18:12",
+      title: "Expertise annulée",
+      description: "Carence du lésé",
+      icon: X,
+      status: "completed",
+      color: "bg-red-500"
+    },
+    {
+      id: 4,
+      date: "05/03/2025 11:07",
+      title: "Expertise programmée",
+      description: "RDV fixé avec l'expert",
+      icon: Calendar,
+      status: "completed",
+      color: "bg-green-500"
+    },
+    {
+      id: 5,
+      date: "06/04/2025 16:30",
+      title: "Relance Expert",
+      description: "Délai dépôt rapport dépassé",
+      icon: AlertTriangle,
+      status: "completed",
+      color: "bg-orange-500"
+    },
+    {
+      id: 6,
+      date: "18/04/2025 10:00",
       title: "Expertise réalisée",
       description: "Rapport d'expertise validé",
       icon: CheckCircle,
@@ -33,22 +60,13 @@ export const EventTimeline = () => {
       color: "bg-green-500"
     },
     {
-      id: 4,
-      date: "20/03/2024 16:30",
-      title: "Relance garages",
-      description: "3 garages contactés pour devis",
-      icon: Phone,
-      status: "in-progress",
-      color: "bg-orange-500"
-    },
-    {
-      id: 5,
-      date: "En attente",
+      id: 7,
+      date: "En cours",
       title: "Réparation",
-      description: "Attribution garage et début réparation",
+      description: "Fin de réparations prévues le 23/04/2025",
       icon: Wrench,
-      status: "pending",
-      color: "bg-gray-400"
+      status: "in-progress",
+      color: "bg-blue-500"
     }
   ];
 
