@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Separator } from "@/components/ui/separator";
 import { Header } from "@/components/layout/Header";
 import { CriticalityIndicator } from "@/components/sinistre/CriticalityIndicator";
 import { EventTimeline } from "@/components/sinistre/EventTimeline";
@@ -13,8 +14,7 @@ import { DocumentsDossier } from "@/components/sinistre/DocumentsDossier";
 import { Car, User, FileText, Calendar, Megaphone, Home, ExternalLink, ChevronDown, ChevronRight, Users, Paperclip, Factory } from "lucide-react";
 
 const SinistreSummary = () => {
-  const [showNotifications, setShowNotifications] = useState(false);
-  const [showFoyerSituation, setShowFoyerSituation] = useState(false);
+  const [showInfosSection, setShowInfosSection] = useState(false);
 
   // Données d'exemple - à remplacer par des données réelles
   const dossierData = {
@@ -192,33 +192,37 @@ const SinistreSummary = () => {
             </CardContent>
           </Card>
 
-          {/* Blocs Notifications et Situation du foyer côte à côte */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Bloc Notifications */}
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="flex items-center text-lg font-semibold text-gray-800">
-                    <Megaphone className="w-5 h-5 mr-2 text-purple-600" />
-                    Notifications et Relations
-                  </CardTitle>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setShowNotifications(!showNotifications)}
-                    className="flex items-center gap-2"
-                  >
-                    {showNotifications ? (
-                      <ChevronDown className="w-4 h-4" />
-                    ) : (
-                      <ChevronRight className="w-4 h-4" />
-                    )}
-                    {showNotifications ? "Masquer" : "Afficher"}
-                  </Button>
-                </div>
-              </CardHeader>
-              {showNotifications && (
-                <CardContent>
+          {/* Bloc Informations Client unifié */}
+          <Card>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle className="flex items-center text-lg font-semibold text-gray-800">
+                  <Users className="w-5 h-5 mr-2 text-blue-600" />
+                  Informations Client
+                </CardTitle>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setShowInfosSection(!showInfosSection)}
+                  className="flex items-center gap-2"
+                >
+                  {showInfosSection ? (
+                    <ChevronDown className="w-4 h-4" />
+                  ) : (
+                    <ChevronRight className="w-4 h-4" />
+                  )}
+                  {showInfosSection ? "Masquer" : "Afficher"}
+                </Button>
+              </div>
+            </CardHeader>
+            {showInfosSection && (
+              <CardContent className="space-y-6">
+                {/* Zone Notifications */}
+                <div>
+                  <h4 className="flex items-center font-medium text-gray-800 mb-3">
+                    <Megaphone className="w-4 h-4 mr-2 text-purple-600" />
+                    Notifications
+                  </h4>
                   <div className="space-y-2 text-sm">
                     <p className="flex items-center">
                       <span className="font-medium">Dernier avis client:</span> 
@@ -239,53 +243,33 @@ const SinistreSummary = () => {
                       </Button>
                       <span>)</span>
                     </p>
-                    
-                    {/* Zone Relations */}
-                    <div className="pt-4 border-t bg-blue-50 p-4 rounded-lg mt-4">
-                      <h4 className="font-medium text-gray-800 mb-3">Relations</h4>
-                      <div className="space-y-2">
-                        <p><span className="font-medium">Foyer :</span> (0)</p>
-                        <p className="flex items-start">
-                          <span className="font-medium">Décisionnel du Foyer :</span>
-                          <span className="ml-1">(1) :</span>
-                          <Factory className="w-4 h-4 mx-2 text-gray-600 mt-0.5" />
-                          <Button variant="link" className="p-0 h-auto text-blue-600 hover:text-blue-800 text-sm">
-                            Suzanne LANDO
-                          </Button>
-                          <span className="ml-1">est l'affaire personnelle de M Marc Dubois</span>
-                        </p>
-                      </div>
-                    </div>
                   </div>
-                </CardContent>
-              )}
-            </Card>
-
-            {/* Bloc Situation du foyer */}
-            <Card>
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="flex items-center text-lg font-semibold text-gray-800">
-                    <Users className="w-5 h-5 mr-2 text-blue-600" />
-                    Situation du foyer
-                  </CardTitle>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setShowFoyerSituation(!showFoyerSituation)}
-                    className="flex items-center gap-2"
-                  >
-                    {showFoyerSituation ? (
-                      <ChevronDown className="w-4 h-4" />
-                    ) : (
-                      <ChevronRight className="w-4 h-4" />
-                    )}
-                    {showFoyerSituation ? "Masquer" : "Afficher"}
-                  </Button>
                 </div>
-              </CardHeader>
-              {showFoyerSituation && (
-                <CardContent>
+
+                <Separator />
+
+                {/* Zone Relations */}
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-medium text-gray-800 mb-3">Relations</h4>
+                  <div className="space-y-2 text-sm">
+                    <p><span className="font-medium">Foyer :</span> (0)</p>
+                    <p className="flex items-start">
+                      <span className="font-medium">Décisionnel du Foyer :</span>
+                      <span className="ml-1">(1) :</span>
+                      <Factory className="w-4 h-4 mx-2 text-gray-600 mt-0.5" />
+                      <Button variant="link" className="p-0 h-auto text-blue-600 hover:text-blue-800 text-sm">
+                        Suzanne LANDO
+                      </Button>
+                      <span className="ml-1">est l'affaire personnelle de M Marc Dubois</span>
+                    </p>
+                  </div>
+                </div>
+
+                <Separator />
+
+                {/* Zone Situation du foyer */}
+                <div>
+                  <h4 className="font-medium text-gray-800 mb-3">Situation du foyer</h4>
                   <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
                     {/* Tableau */}
                     <div className="xl:col-span-2">
@@ -360,10 +344,10 @@ const SinistreSummary = () => {
                       </div>
                     </div>
                   </div>
-                </CardContent>
-              )}
-            </Card>
-          </div>
+                </div>
+              </CardContent>
+            )}
+          </Card>
 
           {/* Système d'onglets */}
           <Tabs defaultValue="synthese" className="w-full">
