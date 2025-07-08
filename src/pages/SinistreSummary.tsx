@@ -216,131 +216,126 @@ const SinistreSummary = () => {
               </div>
             </CardHeader>
             {showInfosSection && (
-              <CardContent className="space-y-6">
-                {/* Zone Notifications */}
-                <div>
-                  <h4 className="flex items-center font-medium text-gray-800 mb-3">
-                    <Megaphone className="w-4 h-4 mr-2 text-purple-600" />
-                    Notifications
-                  </h4>
-                  <div className="space-y-2 text-sm">
-                    <p className="flex items-center">
-                      <span className="font-medium">Dernier avis client:</span> 
-                      <span className="ml-1">5/5</span>
-                      <div className="w-2 h-2 bg-green-500 rounded-full ml-2"></div>
-                    </p>
-                    <p><span className="font-medium">Connexion Espace client:</span> inconnu</p>
-                    <p><span className="font-medium">Connexion App AXA Mobile:</span> inconnu</p>
-                    <p><span className="font-medium">Dernière mise à jour:</span> 20/05/25 par Compagnie</p>
-                    <p><span className="font-medium">Délégation CSE Sinistres:</span> oui</p>
-                    <p><span className="font-medium">Option zéro papier activée:</span> 3 contrats</p>
-                    <p className="flex items-center pt-2 border-t">
-                      <Paperclip className="w-4 h-4 mr-2 text-gray-600" />
-                      <span className="font-medium">Pièces administratives :</span>
-                      <span className="ml-1">0 pièce (</span>
-                      <Button variant="link" className="p-0 h-auto text-blue-600 hover:text-blue-800 text-sm">
-                        0 pièce est cliquable
-                      </Button>
-                      <span>)</span>
-                    </p>
-                  </div>
-                </div>
-
-                <Separator />
-
-                {/* Zone Relations */}
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <h4 className="font-medium text-gray-800 mb-3">Relations</h4>
-                  <div className="space-y-2 text-sm">
-                    <p><span className="font-medium">Foyer :</span> (0)</p>
-                    <p className="flex items-start">
-                      <span className="font-medium">Décisionnel du Foyer :</span>
-                      <span className="ml-1">(1) :</span>
-                      <Factory className="w-4 h-4 mx-2 text-gray-600 mt-0.5" />
-                      <Button variant="link" className="p-0 h-auto text-blue-600 hover:text-blue-800 text-sm">
-                        Suzanne LANDO
-                      </Button>
-                      <span className="ml-1">est l'affaire personnelle de M Marc Dubois</span>
-                    </p>
-                  </div>
-                </div>
-
-                <Separator />
-
-                {/* Zone Situation du foyer */}
-                <div>
-                  <h4 className="font-medium text-gray-800 mb-3">Situation du foyer</h4>
-                  <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-                    {/* Tableau */}
-                    <div className="xl:col-span-2">
-                      <Table>
-                        <TableHeader>
-                          <TableRow className="h-8">
-                            <TableHead className="w-1/2 py-2"></TableHead>
-                            <TableHead className="text-center py-2">Contrats</TableHead>
-                            <TableHead className="text-center py-2">Opportunités</TableHead>
-                            <TableHead className="text-center py-2">Dossiers</TableHead>
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                          {foyerData.map((row, index) => (
-                            <TableRow key={index} className="h-8">
-                              <TableCell className={`py-1 ${row.bold ? "font-bold" : ""}`}>
-                                {row.category}
-                              </TableCell>
-                              <TableCell className="text-center py-1">
-                                <div className="flex items-center justify-center gap-2">
-                                  {!row.contratsIcon && row.contrats}
-                                  {row.contratsIcon && (
-                                    <div className={`w-5 h-5 ${row.contratsIcon.color} rounded-full flex items-center justify-center text-white text-xs font-bold`}>
-                                      {row.contratsIcon.number}
-                                    </div>
-                                  )}
-                                </div>
-                              </TableCell>
-                              <TableCell className="text-center py-1">
-                                <div className="flex items-center justify-center gap-2">
-                                  {!row.opportunitesIcon && row.opportunites}
-                                  {row.opportunitesIcon && (
-                                    <div className={`w-5 h-5 ${row.opportunitesIcon.color} rounded-full flex items-center justify-center text-white text-xs font-bold`}>
-                                      {row.opportunitesIcon.number}
-                                    </div>
-                                  )}
-                                </div>
-                              </TableCell>
-                              <TableCell className="text-center py-1">
-                                <div className="flex items-center justify-center gap-2">
-                                  {!row.dossiersIcon && row.dossiers}
-                                  {row.dossiersIcon && (
-                                    <div className={`w-5 h-5 ${row.dossiersIcon.color} rounded-full flex items-center justify-center text-white text-xs font-bold`}>
-                                      {row.dossiersIcon.number}
-                                    </div>
-                                  )}
-                                </div>
-                              </TableCell>
-                            </TableRow>
-                          ))}
-                        </TableBody>
-                      </Table>
+              <CardContent>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  {/* Zone Notifications */}
+                  <div className="space-y-3">
+                    <h4 className="flex items-center font-medium text-gray-800 mb-3">
+                      <Megaphone className="w-4 h-4 mr-2 text-purple-600" />
+                      Notifications
+                    </h4>
+                    <div className="space-y-2 text-sm">
+                      <p className="flex items-center">
+                        <span className="font-medium">Dernier avis client:</span> 
+                        <span className="ml-1">5/5</span>
+                        <div className="w-2 h-2 bg-green-500 rounded-full ml-2"></div>
+                      </p>
+                      <p><span className="font-medium">Connexion Espace client:</span> inconnu</p>
+                      <p><span className="font-medium">Connexion App AXA Mobile:</span> inconnu</p>
+                      <p><span className="font-medium">Dernière mise à jour:</span> 20/05/25 par Compagnie</p>
+                      <p><span className="font-medium">Délégation CSE Sinistres:</span> oui</p>
+                      <p><span className="font-medium">Option zéro papier activée:</span> 3 contrats</p>
+                      <p className="flex items-center pt-2 border-t">
+                        <Paperclip className="w-4 h-4 mr-2 text-gray-600" />
+                        <span className="font-medium">Pièces administratives :</span>
+                        <span className="ml-1">0 pièce (</span>
+                        <Button variant="link" className="p-0 h-auto text-blue-600 hover:text-blue-800 text-sm">
+                          0 pièce est cliquable
+                        </Button>
+                        <span>)</span>
+                      </p>
                     </div>
+                  </div>
 
-                    {/* Informations financières */}
-                    <div className="space-y-3 text-sm">
-                      <div className="space-y-2">
+                  {/* Zone Relations */}
+                  <div className="bg-blue-50 p-4 rounded-lg space-y-3">
+                    <h4 className="font-medium text-gray-800 mb-3">Relations</h4>
+                    <div className="space-y-2 text-sm">
+                      <p><span className="font-medium">Foyer :</span> (0)</p>
+                      <p className="flex items-start">
+                        <span className="font-medium">Décisionnel du Foyer :</span>
+                        <span className="ml-1">(1) :</span>
+                        <Factory className="w-4 h-4 mx-2 text-gray-600 mt-0.5" />
+                        <Button variant="link" className="p-0 h-auto text-blue-600 hover:text-blue-800 text-sm">
+                          Suzanne LANDO
+                        </Button>
+                        <span className="ml-1">est l'affaire personnelle de M Marc Dubois</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Zone Situation du foyer */}
+                  <div className="space-y-3">
+                    <h4 className="font-medium text-gray-800 mb-3">Situation du foyer</h4>
+                    <div className="space-y-4">
+                      {/* Tableau compact */}
+                      <div className="overflow-hidden">
+                        <Table className="text-xs">
+                          <TableHeader>
+                            <TableRow className="h-6">
+                              <TableHead className="py-1 text-xs"></TableHead>
+                              <TableHead className="text-center py-1 text-xs">Contrats</TableHead>
+                              <TableHead className="text-center py-1 text-xs">Opp.</TableHead>
+                              <TableHead className="text-center py-1 text-xs">Doss.</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {foyerData.slice(0, 4).map((row, index) => (
+                              <TableRow key={index} className="h-6">
+                                <TableCell className={`py-0.5 text-xs ${row.bold ? "font-bold" : ""}`}>
+                                  {row.category.length > 15 ? row.category.substring(0, 15) + '...' : row.category}
+                                </TableCell>
+                                <TableCell className="text-center py-0.5">
+                                  <div className="flex items-center justify-center">
+                                    {!row.contratsIcon && <span className="text-xs">{row.contrats}</span>}
+                                    {row.contratsIcon && (
+                                      <div className={`w-4 h-4 ${row.contratsIcon.color} rounded-full flex items-center justify-center text-white text-xs font-bold`}>
+                                        {row.contratsIcon.number}
+                                      </div>
+                                    )}
+                                  </div>
+                                </TableCell>
+                                <TableCell className="text-center py-0.5">
+                                  <div className="flex items-center justify-center">
+                                    {!row.opportunitesIcon && <span className="text-xs">{row.opportunites}</span>}
+                                    {row.opportunitesIcon && (
+                                      <div className={`w-4 h-4 ${row.opportunitesIcon.color} rounded-full flex items-center justify-center text-white text-xs font-bold`}>
+                                        {row.opportunitesIcon.number}
+                                      </div>
+                                    )}
+                                  </div>
+                                </TableCell>
+                                <TableCell className="text-center py-0.5">
+                                  <div className="flex items-center justify-center">
+                                    {!row.dossiersIcon && <span className="text-xs">{row.dossiers}</span>}
+                                    {row.dossiersIcon && (
+                                      <div className={`w-4 h-4 ${row.dossiersIcon.color} rounded-full flex items-center justify-center text-white text-xs font-bold`}>
+                                        {row.dossiersIcon.number}
+                                      </div>
+                                    )}
+                                  </div>
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </div>
+
+                      {/* Informations financières */}
+                      <div className="space-y-2 text-xs">
                         <p><span className="font-medium">Cotisations -</span> 1689 €</p>
                         <p><span className="font-medium">En cours -</span> -€</p>
                         <p><span className="font-medium">Préqualification Crédit -</span> CP</p>
                         <p><span className="font-medium">Solde -</span> - €</p>
-                      </div>
-                      <div className="pt-3 border-t">
-                        <p className="text-xs text-gray-600 mb-2">Accès consultation</p>
-                        <Button 
-                          variant="link" 
-                          className="p-0 h-auto text-blue-600 hover:text-blue-800 text-xs"
-                        >
-                          <ExternalLink className="w-3 h-3 mr-1" />
-                          Vision consolidée
-                        </Button>
+                        <div className="pt-2 border-t">
+                          <Button 
+                            variant="link" 
+                            className="p-0 h-auto text-blue-600 hover:text-blue-800 text-xs"
+                          >
+                            <ExternalLink className="w-3 h-3 mr-1" />
+                            Vision consolidée
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </div>
