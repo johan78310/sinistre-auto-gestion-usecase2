@@ -1,5 +1,4 @@
 
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,15 +9,17 @@ import { EventTimeline } from "@/components/sinistre/EventTimeline";
 import { NextBestActions } from "@/components/sinistre/NextBestActions";
 import { DossierChat } from "@/components/sinistre/DossierChat";
 import { DocumentsDossier } from "@/components/sinistre/DocumentsDossier";
-import { Car, User, FileText, Calendar } from "lucide-react";
+import { Car, User, FileText, Calendar, Megaphone } from "lucide-react";
 
 const SinistreSummary = () => {
   // Données d'exemple - à remplacer par des données réelles
   const dossierData = {
     numeroSinistre: "170492218073",
+    numeroPortefeuille: "0006052544",
     dateOuverture: "06 janvier 2025",
     assure: {
       nom: "Marc DUBOIS",
+      age: "50 ans - 28/06/1975",
       telephone: "06 55 23 47 00",
       email: "marc.dubois@email.com",
       adresse: "7 avenue des Coquelicots - Montigny le Bretonneux 78300"
@@ -50,6 +51,9 @@ const SinistreSummary = () => {
                   <p className="text-gray-600 mt-1">
                     Ouvert le {dossierData.dateOuverture} • Montant estimé: {dossierData.montantEstime}
                   </p>
+                  <p className="text-gray-600 text-sm mt-1">
+                    N° Portefeuille {dossierData.numeroPortefeuille}
+                  </p>
                 </div>
                 <Badge variant="outline" className="px-3 py-1">
                   <FileText className="w-4 h-4 mr-2" />
@@ -58,7 +62,7 @@ const SinistreSummary = () => {
               </div>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Informations Assuré */}
                 <div className="space-y-3">
                   <div className="flex items-center text-lg font-semibold text-gray-800">
@@ -67,6 +71,7 @@ const SinistreSummary = () => {
                   </div>
                   <div className="space-y-2 text-sm">
                     <p><span className="font-medium">Nom:</span> {dossierData.assure.nom}</p>
+                    <p><span className="font-medium">Âge:</span> {dossierData.assure.age}</p>
                     <p><span className="font-medium">Téléphone:</span> {dossierData.assure.telephone}</p>
                     <p><span className="font-medium">Email:</span> {dossierData.assure.email}</p>
                     <p><span className="font-medium">Adresse:</span> {dossierData.assure.adresse}</p>
@@ -83,6 +88,26 @@ const SinistreSummary = () => {
                     <p><span className="font-medium">Véhicule:</span> {dossierData.vehicule.marque} {dossierData.vehicule.modele}</p>
                     <p><span className="font-medium">Immatriculation:</span> {dossierData.vehicule.immatriculation}</p>
                     <p><span className="font-medium">Année:</span> {dossierData.vehicule.annee}</p>
+                  </div>
+                </div>
+
+                {/* Notifications */}
+                <div className="space-y-3">
+                  <div className="flex items-center text-lg font-semibold text-gray-800">
+                    <Megaphone className="w-5 h-5 mr-2 text-purple-600" />
+                    Notifications
+                  </div>
+                  <div className="space-y-2 text-sm">
+                    <p className="flex items-center">
+                      <span className="font-medium">Dernier avis client:</span> 
+                      <span className="ml-1">5/5</span>
+                      <div className="w-2 h-2 bg-green-500 rounded-full ml-2"></div>
+                    </p>
+                    <p><span className="font-medium">Connexion Espace client:</span> inconnu</p>
+                    <p><span className="font-medium">Connexion App AXA Mobile:</span> inconnu</p>
+                    <p><span className="font-medium">Dernière mise à jour:</span> 20/05/25 par Compagnie</p>
+                    <p><span className="font-medium">Délégation CSE Sinistres:</span> oui</p>
+                    <p><span className="font-medium">Option zéro papier activée:</span> 3 contrats</p>
                   </div>
                 </div>
               </div>
@@ -126,4 +151,3 @@ const SinistreSummary = () => {
 };
 
 export default SinistreSummary;
-
