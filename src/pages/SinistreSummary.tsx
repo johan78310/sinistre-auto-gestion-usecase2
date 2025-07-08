@@ -265,22 +265,22 @@ const SinistreSummary = () => {
                     <div className="xl:col-span-2">
                       <Table>
                         <TableHeader>
-                          <TableRow>
-                            <TableHead className="w-1/2"></TableHead>
-                            <TableHead className="text-center">Contrats</TableHead>
-                            <TableHead className="text-center">Opportunités</TableHead>
-                            <TableHead className="text-center">Dossiers</TableHead>
+                          <TableRow className="h-8">
+                            <TableHead className="w-1/2 py-2"></TableHead>
+                            <TableHead className="text-center py-2">Contrats</TableHead>
+                            <TableHead className="text-center py-2">Opportunités</TableHead>
+                            <TableHead className="text-center py-2">Dossiers</TableHead>
                           </TableRow>
                         </TableHeader>
                         <TableBody>
                           {foyerData.map((row, index) => (
-                            <TableRow key={index}>
-                              <TableCell className={row.bold ? "font-bold" : ""}>
+                            <TableRow key={index} className="h-8">
+                              <TableCell className={`py-1 ${row.bold ? "font-bold" : ""}`}>
                                 {row.category}
                               </TableCell>
-                              <TableCell className="text-center">
+                              <TableCell className="text-center py-1">
                                 <div className="flex items-center justify-center gap-2">
-                                  {row.contrats}
+                                  {!row.contratsIcon && row.contrats}
                                   {row.contratsIcon && (
                                     <div className={`w-5 h-5 ${row.contratsIcon.color} rounded-full flex items-center justify-center text-white text-xs font-bold`}>
                                       {row.contratsIcon.number}
@@ -288,9 +288,9 @@ const SinistreSummary = () => {
                                   )}
                                 </div>
                               </TableCell>
-                              <TableCell className="text-center">
+                              <TableCell className="text-center py-1">
                                 <div className="flex items-center justify-center gap-2">
-                                  {row.opportunites}
+                                  {!row.opportunitesIcon && row.opportunites}
                                   {row.opportunitesIcon && (
                                     <div className={`w-5 h-5 ${row.opportunitesIcon.color} rounded-full flex items-center justify-center text-white text-xs font-bold`}>
                                       {row.opportunitesIcon.number}
@@ -298,9 +298,9 @@ const SinistreSummary = () => {
                                   )}
                                 </div>
                               </TableCell>
-                              <TableCell className="text-center">
+                              <TableCell className="text-center py-1">
                                 <div className="flex items-center justify-center gap-2">
-                                  {row.dossiers}
+                                  {!row.dossiersIcon && row.dossiers}
                                   {row.dossiersIcon && (
                                     <div className={`w-5 h-5 ${row.dossiersIcon.color} rounded-full flex items-center justify-center text-white text-xs font-bold`}>
                                       {row.dossiersIcon.number}
