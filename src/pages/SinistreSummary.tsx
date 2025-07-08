@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,9 +9,11 @@ import { EventTimeline } from "@/components/sinistre/EventTimeline";
 import { NextBestActions } from "@/components/sinistre/NextBestActions";
 import { DossierChat } from "@/components/sinistre/DossierChat";
 import { DocumentsDossier } from "@/components/sinistre/DocumentsDossier";
-import { Car, User, FileText, Calendar, Megaphone, Home, ExternalLink } from "lucide-react";
+import { Car, User, FileText, Calendar, Megaphone, Home, ExternalLink, ChevronDown, ChevronRight } from "lucide-react";
 
 const SinistreSummary = () => {
+  const [showNotifications, setShowNotifications] = useState(false);
+
   // Données d'exemple - à remplacer par des données réelles
   const dossierData = {
     numeroSinistre: "170492218073",
@@ -129,25 +130,42 @@ const SinistreSummary = () => {
           {/* Bloc Notifications séparé */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center text-lg font-semibold text-gray-800">
-                <Megaphone className="w-5 h-5 mr-2 text-purple-600" />
-                Notifications et Informations Client
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2 text-sm">
-                <p className="flex items-center">
-                  <span className="font-medium">Dernier avis client:</span> 
-                  <span className="ml-1">5/5</span>
-                  <div className="w-2 h-2 bg-green-500 rounded-full ml-2"></div>
-                </p>
-                <p><span className="font-medium">Connexion Espace client:</span> inconnu</p>
-                <p><span className="font-medium">Connexion App AXA Mobile:</span> inconnu</p>
-                <p><span className="font-medium">Dernière mise à jour:</span> 20/05/25 par Compagnie</p>
-                <p><span className="font-medium">Délégation CSE Sinistres:</span> oui</p>
-                <p><span className="font-medium">Option zéro papier activée:</span> 3 contrats</p>
+              <div className="flex items-center justify-between">
+                <CardTitle className="flex items-center text-lg font-semibold text-gray-800">
+                  <Megaphone className="w-5 h-5 mr-2 text-purple-600" />
+                  Notifications et Informations Client
+                </CardTitle>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setShowNotifications(!showNotifications)}
+                  className="flex items-center gap-2"
+                >
+                  {showNotifications ? (
+                    <ChevronDown className="w-4 h-4" />
+                  ) : (
+                    <ChevronRight className="w-4 h-4" />
+                  )}
+                  {showNotifications ? "Masquer" : "Afficher"}
+                </Button>
               </div>
-            </CardContent>
+            </CardHeader>
+            {showNotifications && (
+              <CardContent>
+                <div className="space-y-2 text-sm">
+                  <p className="flex items-center">
+                    <span className="font-medium">Dernier avis client:</span> 
+                    <span className="ml-1">5/5</span>
+                    <div className="w-2 h-2 bg-green-500 rounded-full ml-2"></div>
+                  </p>
+                  <p><span className="font-medium">Connexion Espace client:</span> inconnu</p>
+                  <p><span className="font-medium">Connexion App AXA Mobile:</span> inconnu</p>
+                  <p><span className="font-medium">Dernière mise à jour:</span> 20/05/25 par Compagnie</p>
+                  <p><span className="font-medium">Délégation CSE Sinistres:</span> oui</p>
+                  <p><span className="font-medium">Option zéro papier activée:</span> 3 contrats</p>
+                </div>
+              </CardContent>
+            )}
           </Card>
 
           {/* Système d'onglets */}
