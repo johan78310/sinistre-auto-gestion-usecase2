@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -9,27 +8,20 @@ import { ArrowRight, Phone, Mail, FileText, Clock, Send, Sparkles } from "lucide
 export const NextBestActions = () => {
   const [showEmailContent, setShowEmailContent] = useState(false);
   const [emailSubject, setEmailSubject] = useState("Rapport d'expertise - Dossier Sinistre SIN-2024-001234");
-  const [emailContent, setEmailContent] = useState(`Monsieur Dupont,
+  const [emailContent, setEmailContent] = useState(`Bonjour M. DUBOIS,
 
-Suite au sinistre survenu le 15/03/2024 concernant votre véhicule Peugeot 308 immatriculé AB-123-CD, nous avons le plaisir de vous informer que l'expertise de votre véhicule a été finalisée.
+Je vous contacte concernant votre sinistre accident, survenu le 06/01/2025, impliquant votre véhicule Peugeot 308 Immatriculé AB-123-CD.
 
-Vous trouverez ci-joint le rapport d'expertise détaillé établi par notre expert automobile. Ce document fait état des dommages constatés et de l'estimation des réparations nécessaires.
+Après analyse de votre sinistre, je constate que les délais de gestion sont totalement contraires à la qualité de service que nous tenons à vous offrir.
 
-Les principaux éléments du rapport sont les suivants :
-- Montant estimé des réparations : 4 500 €
-- Véhicule réparable selon les standards de sécurité
-- Délai estimé de réparation : 7 à 10 jours ouvrés
+J'ai obtenu la confirmation auprès de notre expert que les réparations seront terminées sous 5 jours. Notre garage vous contactera afin d'organiser la restitution du véhicule. Je vous contacterai le 24/04/2025 sur votre téléphone 06 55 23 47 00 afin de m'assurer de la bonne restitution de votre véhicule. Je tiens à vous présenter nos excuses pour le désagrément occasionné, et nous redoublerons désormais de vigilance à cet égard. Ainsi, vous recevrez, dans les prochains jours, un dédommagement exceptionnel de 100 €.
 
-Nous vous invitons à prendre contact avec le garage de votre choix agréé pour planifier les réparations. N'hésitez pas à nous faire parvenir le devis définitif pour validation.
+Je reste bien entendu à votre écoute pour répondre à vos questions.
 
-Pour toute question concernant votre dossier, vous pouvez nous contacter au numéro habituel ou répondre directement à cet email.
+Avec toute notre attention.
 
-Nous restons à votre disposition pour tout complément d'information.
-
-Cordialement,
-
-Service Sinistres
-Votre Compagnie d'Assurance`);
+Hugo GRANGE
+Votre Conseiller AXA`);
 
   const actions = [
     {
