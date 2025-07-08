@@ -238,11 +238,11 @@ const SinistreSummary = () => {
                       <p className="flex items-center pt-2 border-t">
                         <Paperclip className="w-4 h-4 mr-2 text-gray-600" />
                         <span className="font-medium">Pièces administratives :</span>
-                        <span className="ml-1">0 pièce (</span>
-                        <Button variant="link" className="p-0 h-auto text-blue-600 hover:text-blue-800 text-sm">
-                          0 pièce est cliquable
-                        </Button>
-                        <span>)</span>
+                        <span className="ml-1">
+                          <Button variant="link" className="p-0 h-auto text-blue-600 hover:text-blue-800 text-sm">
+                            0 pièce
+                          </Button>
+                        </span>
                       </p>
                     </div>
                   </div>
