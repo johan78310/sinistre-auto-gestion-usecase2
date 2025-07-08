@@ -1,4 +1,5 @@
 
+
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -26,8 +27,7 @@ const SinistreSummary = () => {
       marque: "Peugeot",
       modele: "308 - 1.6 BlueHDi 120ch – Berline",
       immatriculation: "AB-123-CD",
-      annee: "2020",
-      couleur: "Bleu métallisé"
+      annee: "2020"
     },
     criticite: "orange" as const,
     montantEstime: "4 500 €"
@@ -83,7 +83,6 @@ const SinistreSummary = () => {
                     <p><span className="font-medium">Véhicule:</span> {dossierData.vehicule.marque} {dossierData.vehicule.modele}</p>
                     <p><span className="font-medium">Immatriculation:</span> {dossierData.vehicule.immatriculation}</p>
                     <p><span className="font-medium">Année:</span> {dossierData.vehicule.annee}</p>
-                    <p><span className="font-medium">Couleur:</span> {dossierData.vehicule.couleur}</p>
                   </div>
                 </div>
               </div>
@@ -127,3 +126,4 @@ const SinistreSummary = () => {
 };
 
 export default SinistreSummary;
+
