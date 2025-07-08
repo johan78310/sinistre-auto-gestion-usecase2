@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -42,7 +43,7 @@ const SinistreSummary = () => {
     { 
       category: "Auto/Moto", 
       bold: true, 
-      contrats: "2", 
+      contrats: "-", 
       opportunites: "-", 
       dossiers: "-",
       contratsIcon: { color: "bg-green-500", number: "2" }
@@ -50,23 +51,23 @@ const SinistreSummary = () => {
     { 
       category: "Habitation", 
       bold: false, 
-      contrats: "1", 
+      contrats: "-", 
       opportunites: "-", 
-      dossiers: "1",
+      dossiers: "-",
       dossiersIcon: { color: "bg-yellow-500", number: "1" }
     },
     { 
       category: "Prév. & dépendance", 
       bold: true, 
       contrats: "-", 
-      opportunites: "2", 
+      opportunites: "-", 
       dossiers: "-",
       contratsIcon: { color: "bg-green-500", number: "1" }
     },
     { 
       category: "Santé", 
       bold: false, 
-      contrats: "1", 
+      contrats: "-", 
       opportunites: "-", 
       dossiers: "-"
     },
@@ -74,13 +75,13 @@ const SinistreSummary = () => {
       category: "Banque - Crédit", 
       bold: false, 
       contrats: "-", 
-      opportunites: "1", 
+      opportunites: "-", 
       dossiers: "-"
     },
     { 
       category: "Epargne & retraite", 
       bold: false, 
-      contrats: "1", 
+      contrats: "-", 
       opportunites: "-", 
       dossiers: "-"
     },
@@ -318,9 +319,9 @@ const SinistreSummary = () => {
                     <div className="space-y-3 text-sm">
                       <div className="space-y-2">
                         <p><span className="font-medium">Cotisations -</span> 1689 €</p>
-                        <p><span className="font-medium">En cours -</span> 0€</p>
+                        <p><span className="font-medium">En cours -</span> -€</p>
                         <p><span className="font-medium">Préqualification Crédit -</span> CP</p>
-                        <p><span className="font-medium">Solde -</span> 0 €</p>
+                        <p><span className="font-medium">Solde -</span> - €</p>
                       </div>
                       <div className="pt-3 border-t">
                         <p className="text-xs text-gray-600 mb-2">Accès consultation</p>
