@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -68,7 +67,7 @@ Votre Compagnie d'Assurance`;
   return (
     <Card>
       <CardHeader>
-        <div className="bg-purple-100 border border-purple-200 rounded-lg p-3">
+        <div className="bg-purple-100 border border-purple-200 rounded-lg p-3 inline-block w-fit">
           <CardTitle className="flex items-center text-purple-700">
             <Sparkles className="w-5 h-5 mr-2 text-purple-600" />
             Prochaines actions suggérées par l'IA
@@ -120,7 +119,7 @@ Votre Compagnie d'Assurance`;
                   <div className="mt-4 pt-4 border-t">
                     <div className="bg-gray-50 rounded-lg p-4">
                       <h5 className="font-semibold text-gray-900 mb-3">Modèle de mail</h5>
-                      <div className="bg-purple-100 border border-purple-200 rounded-lg p-3 mb-3">
+                      <div className="bg-purple-100 border border-purple-200 rounded-lg p-3 mb-3 inline-block w-fit">
                         <div className="flex items-center text-sm text-purple-700">
                           <Sparkles className="w-4 h-4 mr-2 text-purple-600" />
                           Modèle généré par l'IA d'après les informations du dossier
