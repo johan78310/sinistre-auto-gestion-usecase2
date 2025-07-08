@@ -198,7 +198,7 @@ const SinistreSummary = () => {
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center text-lg font-semibold text-gray-800">
                   <Users className="w-5 h-5 mr-2 text-blue-600" />
-                  Informations Client
+                  Notifications & relations client, situation du foyer
                 </CardTitle>
                 <Button
                   variant="ghost"
