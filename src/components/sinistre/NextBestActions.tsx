@@ -1,8 +1,7 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Phone, Mail, FileText, Clock, Copy } from "lucide-react";
+import { ArrowRight, Phone, Mail, FileText, Clock, Copy, Sparkles } from "lucide-react";
 
 export const NextBestActions = () => {
   const [showEmailContent, setShowEmailContent] = useState(false);
@@ -118,6 +117,10 @@ Votre Compagnie d'Assurance`;
                   <div className="mt-4 pt-4 border-t">
                     <div className="bg-gray-50 rounded-lg p-4">
                       <h5 className="font-semibold text-gray-900 mb-3">Modèle de mail</h5>
+                      <div className="flex items-center text-sm text-gray-600 mb-3">
+                        <Sparkles className="w-4 h-4 mr-2 text-indigo-600" />
+                        Modèle généré par l'IA d'après les informations du dossier
+                      </div>
                       <div className="bg-white rounded border p-4 text-sm text-gray-700 whitespace-pre-line font-mono">
                         {emailContent}
                       </div>
