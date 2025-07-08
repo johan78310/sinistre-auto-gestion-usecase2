@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -13,17 +14,17 @@ import { Car, User, FileText, Calendar } from "lucide-react";
 const SinistreSummary = () => {
   // Données d'exemple - à remplacer par des données réelles
   const dossierData = {
-    numeroSinistre: "SIN-2024-001234",
-    dateOuverture: "15/03/2024",
+    numeroSinistre: "170492218073",
+    dateOuverture: "06 janvier 2025",
     assure: {
-      nom: "Martin Dupont",
-      telephone: "06 12 34 56 78",
-      email: "martin.dupont@email.com",
-      adresse: "123 Rue de la Paix, 75001 Paris"
+      nom: "Marc DUBOIS",
+      telephone: "06 55 23 47 00",
+      email: "marc.dubois@email.com",
+      adresse: "7 avenue des Coquelicots - Montigny le Bretonneux 78300"
     },
     vehicule: {
       marque: "Peugeot",
-      modele: "308",
+      modele: "308 - 1.6 BlueHDi 120ch – Berline",
       immatriculation: "AB-123-CD",
       annee: "2020",
       couleur: "Bleu métallisé"
