@@ -1,10 +1,20 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AlertTriangle, CheckCircle, Clock } from "lucide-react";
+import { AlertTriangle, CheckCircle } from "lucide-react";
 
 interface CriticalityIndicatorProps {
   level: "green" | "orange" | "red";
 }
+
+const TrafficLight = ({ activeColor }: { activeColor: "green" | "orange" | "red" }) => {
+  return (
+    <div className="flex flex-col items-center space-y-1 bg-gray-800 rounded-lg p-2">
+      <div className={`w-3 h-3 rounded-full ${activeColor === 'red' ? 'bg-red-500' : 'bg-gray-600'}`}></div>
+      <div className={`w-3 h-3 rounded-full ${activeColor === 'orange' ? 'bg-orange-500' : 'bg-gray-600'}`}></div>
+      <div className={`w-3 h-3 rounded-full ${activeColor === 'green' ? 'bg-green-500' : 'bg-gray-600'}`}></div>
+    </div>
+  );
+};
 
 export const CriticalityIndicator = ({ level }: CriticalityIndicatorProps) => {
   const getIndicatorConfig = () => {
@@ -21,7 +31,7 @@ export const CriticalityIndicator = ({ level }: CriticalityIndicatorProps) => {
         };
       case "orange":
         return {
-          icon: Clock,
+          icon: null,
           color: "text-orange-600",
           bgColor: "bg-orange-50",
           borderColor: "border-orange-200",
@@ -50,8 +60,12 @@ export const CriticalityIndicator = ({ level }: CriticalityIndicatorProps) => {
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center text-lg">
           <span className="text-2xl mr-3">{config.emoji}</span>
-          <IconComponent className={`w-5 h-5 mr-2 ${config.color}`} />
-          Niveau de Criticité
+          {level === "orange" ? (
+            <TrafficLight activeColor="orange" />
+          ) : (
+            IconComponent && <IconComponent className={`w-5 h-5 mr-2 ${config.color}`} />
+          )}
+          <span className="ml-2">Niveau de Criticité</span>
         </CardTitle>
       </CardHeader>
       <CardContent>
