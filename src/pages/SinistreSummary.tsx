@@ -3,16 +3,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Header } from "@/components/layout/Header";
 import { CriticalityIndicator } from "@/components/sinistre/CriticalityIndicator";
 import { EventTimeline } from "@/components/sinistre/EventTimeline";
 import { NextBestActions } from "@/components/sinistre/NextBestActions";
 import { DossierChat } from "@/components/sinistre/DossierChat";
 import { DocumentsDossier } from "@/components/sinistre/DocumentsDossier";
-import { Car, User, FileText, Calendar, Megaphone, Home, ExternalLink, ChevronDown, ChevronRight } from "lucide-react";
+import { Car, User, FileText, Calendar, Megaphone, Home, ExternalLink, ChevronDown, ChevronRight, Users } from "lucide-react";
 
 const SinistreSummary = () => {
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showFoyerSituation, setShowFoyerSituation] = useState(false);
 
   // Données d'exemple - à remplacer par des données réelles
   const dossierData = {
@@ -35,6 +37,17 @@ const SinistreSummary = () => {
     criticite: "orange" as const,
     montantEstime: "4 500 €"
   };
+
+  const foyerData = [
+    { category: "Auto/Moto", bold: true, contrats: "2", opportunites: "1", dossiers: "0" },
+    { category: "Habitation", bold: false, contrats: "1", opportunites: "0", dossiers: "1" },
+    { category: "Prév. & dépendance", bold: true, contrats: "0", opportunites: "2", dossiers: "0" },
+    { category: "Santé", bold: false, contrats: "1", opportunites: "0", dossiers: "0" },
+    { category: "Banque - Crédit", bold: false, contrats: "0", opportunites: "1", dossiers: "0" },
+    { category: "Epargne & retraite", bold: false, contrats: "1", opportunites: "0", dossiers: "0" },
+    { category: "Famille - Loisir", bold: false, contrats: "0", opportunites: "0", dossiers: "0" },
+    { category: "Autre", bold: true, contrats: "0", opportunites: "0", dossiers: "0" },
+  ];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -127,46 +140,125 @@ const SinistreSummary = () => {
             </CardContent>
           </Card>
 
-          {/* Bloc Notifications séparé */}
-          <Card>
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <CardTitle className="flex items-center text-lg font-semibold text-gray-800">
-                  <Megaphone className="w-5 h-5 mr-2 text-purple-600" />
-                  Notifications et Informations Client
-                </CardTitle>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setShowNotifications(!showNotifications)}
-                  className="flex items-center gap-2"
-                >
-                  {showNotifications ? (
-                    <ChevronDown className="w-4 h-4" />
-                  ) : (
-                    <ChevronRight className="w-4 h-4" />
-                  )}
-                  {showNotifications ? "Masquer" : "Afficher"}
-                </Button>
-              </div>
-            </CardHeader>
-            {showNotifications && (
-              <CardContent>
-                <div className="space-y-2 text-sm">
-                  <p className="flex items-center">
-                    <span className="font-medium">Dernier avis client:</span> 
-                    <span className="ml-1">5/5</span>
-                    <div className="w-2 h-2 bg-green-500 rounded-full ml-2"></div>
-                  </p>
-                  <p><span className="font-medium">Connexion Espace client:</span> inconnu</p>
-                  <p><span className="font-medium">Connexion App AXA Mobile:</span> inconnu</p>
-                  <p><span className="font-medium">Dernière mise à jour:</span> 20/05/25 par Compagnie</p>
-                  <p><span className="font-medium">Délégation CSE Sinistres:</span> oui</p>
-                  <p><span className="font-medium">Option zéro papier activée:</span> 3 contrats</p>
+          {/* Blocs Notifications et Situation du foyer côte à côte */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Bloc Notifications */}
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="flex items-center text-lg font-semibold text-gray-800">
+                    <Megaphone className="w-5 h-5 mr-2 text-purple-600" />
+                    Notifications et Informations Client
+                  </CardTitle>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setShowNotifications(!showNotifications)}
+                    className="flex items-center gap-2"
+                  >
+                    {showNotifications ? (
+                      <ChevronDown className="w-4 h-4" />
+                    ) : (
+                      <ChevronRight className="w-4 h-4" />
+                    )}
+                    {showNotifications ? "Masquer" : "Afficher"}
+                  </Button>
                 </div>
-              </CardContent>
-            )}
-          </Card>
+              </CardHeader>
+              {showNotifications && (
+                <CardContent>
+                  <div className="space-y-2 text-sm">
+                    <p className="flex items-center">
+                      <span className="font-medium">Dernier avis client:</span> 
+                      <span className="ml-1">5/5</span>
+                      <div className="w-2 h-2 bg-green-500 rounded-full ml-2"></div>
+                    </p>
+                    <p><span className="font-medium">Connexion Espace client:</span> inconnu</p>
+                    <p><span className="font-medium">Connexion App AXA Mobile:</span> inconnu</p>
+                    <p><span className="font-medium">Dernière mise à jour:</span> 20/05/25 par Compagnie</p>
+                    <p><span className="font-medium">Délégation CSE Sinistres:</span> oui</p>
+                    <p><span className="font-medium">Option zéro papier activée:</span> 3 contrats</p>
+                  </div>
+                </CardContent>
+              )}
+            </Card>
+
+            {/* Bloc Situation du foyer */}
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="flex items-center text-lg font-semibold text-gray-800">
+                    <Users className="w-5 h-5 mr-2 text-blue-600" />
+                    Situation du foyer
+                  </CardTitle>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setShowFoyerSituation(!showFoyerSituation)}
+                    className="flex items-center gap-2"
+                  >
+                    {showFoyerSituation ? (
+                      <ChevronDown className="w-4 h-4" />
+                    ) : (
+                      <ChevronRight className="w-4 h-4" />
+                    )}
+                    {showFoyerSituation ? "Masquer" : "Afficher"}
+                  </Button>
+                </div>
+              </CardHeader>
+              {showFoyerSituation && (
+                <CardContent>
+                  <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+                    {/* Tableau */}
+                    <div className="xl:col-span-2">
+                      <Table>
+                        <TableHeader>
+                          <TableRow>
+                            <TableHead className="w-1/2"></TableHead>
+                            <TableHead className="text-center">Contrats</TableHead>
+                            <TableHead className="text-center">Opportunités</TableHead>
+                            <TableHead className="text-center">Dossiers</TableHead>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          {foyerData.map((row, index) => (
+                            <TableRow key={index}>
+                              <TableCell className={row.bold ? "font-bold" : ""}>
+                                {row.category}
+                              </TableCell>
+                              <TableCell className="text-center">{row.contrats}</TableCell>
+                              <TableCell className="text-center">{row.opportunites}</TableCell>
+                              <TableCell className="text-center">{row.dossiers}</TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </div>
+
+                    {/* Informations financières */}
+                    <div className="space-y-3 text-sm">
+                      <div className="space-y-2">
+                        <p><span className="font-medium">Cotisations -</span> 1689 €</p>
+                        <p><span className="font-medium">En cours -</span> 0€</p>
+                        <p><span className="font-medium">Préqualification Crédit -</span> CP</p>
+                        <p><span className="font-medium">Solde -</span> 0 €</p>
+                      </div>
+                      <div className="pt-3 border-t">
+                        <p className="text-xs text-gray-600 mb-2">Accès consultation</p>
+                        <Button 
+                          variant="link" 
+                          className="p-0 h-auto text-blue-600 hover:text-blue-800 text-xs"
+                        >
+                          <ExternalLink className="w-3 h-3 mr-1" />
+                          Vision consolidée
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              )}
+            </Card>
+          </div>
 
           {/* Système d'onglets */}
           <Tabs defaultValue="synthese" className="w-full">
