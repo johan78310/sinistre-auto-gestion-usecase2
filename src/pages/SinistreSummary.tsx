@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -242,7 +241,7 @@ const SinistreSummary = () => {
                     </p>
                     
                     {/* Zone Relations */}
-                    <div className="pt-4 border-t">
+                    <div className="pt-4 border-t bg-blue-50 p-4 rounded-lg mt-4">
                       <h4 className="font-medium text-gray-800 mb-3">Relations</h4>
                       <div className="space-y-2">
                         <p><span className="font-medium">Foyer :</span> (0)</p>
