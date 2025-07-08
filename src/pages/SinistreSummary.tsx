@@ -248,19 +248,23 @@ const SinistreSummary = () => {
                   </div>
 
                   {/* Zone Relations */}
-                  <div className="bg-blue-50 p-4 rounded-lg space-y-3">
+                  <div className="space-y-3">
                     <h4 className="font-medium text-gray-800 mb-3">Relations</h4>
                     <div className="space-y-2 text-sm">
                       <p><span className="font-medium">Foyer :</span> (0)</p>
-                      <p className="flex items-start">
+                      <p>
                         <span className="font-medium">Décisionnel du Foyer :</span>
                         <span className="ml-1">(1) :</span>
-                        <Factory className="w-4 h-4 mx-2 text-gray-600 mt-0.5" />
-                        <Button variant="link" className="p-0 h-auto text-blue-600 hover:text-blue-800 text-sm">
-                          Suzanne LANDO
-                        </Button>
-                        <span className="ml-1">est l'affaire personnelle de M Marc Dubois</span>
                       </p>
+                      <div className="flex items-start mt-2">
+                        <Factory className="w-4 h-4 mr-2 text-gray-600 mt-0.5" />
+                        <div>
+                          <Button variant="link" className="p-0 h-auto text-blue-600 hover:text-blue-800 text-sm">
+                            Suzanne LANDO
+                          </Button>
+                          <p className="text-sm">est l'affaire personnelle de M Marc Dubois</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
