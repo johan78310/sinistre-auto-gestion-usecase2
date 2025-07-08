@@ -158,6 +158,11 @@ const SinistreSummary = () => {
                     <p><span className="font-medium">Téléphone:</span> {dossierData.assure.telephone}</p>
                     <p><span className="font-medium">Email:</span> {dossierData.assure.email}</p>
                     <p><span className="font-medium">Adresse:</span> {dossierData.assure.adresse}</p>
+                    <p className="flex items-center">
+                      <Paperclip className="w-4 h-4 mr-2 text-gray-600" />
+                      <span className="font-medium">Pièces administratives :</span>
+                      <span className="ml-1">0 pièce (0 pièce est cliquable)</span>
+                    </p>
                   </div>
                 </div>
 
