@@ -1,11 +1,34 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, Phone, Mail, FileText, Clock, Copy, Sparkles } from "lucide-react";
 
 export const NextBestActions = () => {
   const [showEmailContent, setShowEmailContent] = useState(false);
+  const [emailSubject, setEmailSubject] = useState("Rapport d'expertise - Dossier Sinistre SIN-2024-001234");
+  const [emailContent, setEmailContent] = useState(`Monsieur Dupont,
+
+Suite au sinistre survenu le 15/03/2024 concernant votre véhicule Peugeot 308 immatriculé AB-123-CD, nous avons le plaisir de vous informer que l'expertise de votre véhicule a été finalisée.
+
+Vous trouverez ci-joint le rapport d'expertise détaillé établi par notre expert automobile. Ce document fait état des dommages constatés et de l'estimation des réparations nécessaires.
+
+Les principaux éléments du rapport sont les suivants :
+- Montant estimé des réparations : 4 500 €
+- Véhicule réparable selon les standards de sécurité
+- Délai estimé de réparation : 7 à 10 jours ouvrés
+
+Nous vous invitons à prendre contact avec le garage de votre choix agréé pour planifier les réparations. N'hésitez pas à nous faire parvenir le devis définitif pour validation.
+
+Pour toute question concernant votre dossier, vous pouvez nous contacter au numéro habituel ou répondre directement à cet email.
+
+Nous restons à votre disposition pour tout complément d'information.
+
+Cordialement,
+
+Service Sinistres
+Votre Compagnie d'Assurance`);
 
   const actions = [
     {
@@ -30,30 +53,6 @@ export const NextBestActions = () => {
       estimatedTime: "5 min"
     }
   ];
-
-  const emailSubject = "Rapport d'expertise - Dossier Sinistre SIN-2024-001234";
-  
-  const emailContent = `Monsieur Dupont,
-
-Suite au sinistre survenu le 15/03/2024 concernant votre véhicule Peugeot 308 immatriculé AB-123-CD, nous avons le plaisir de vous informer que l'expertise de votre véhicule a été finalisée.
-
-Vous trouverez ci-joint le rapport d'expertise détaillé établi par notre expert automobile. Ce document fait état des dommages constatés et de l'estimation des réparations nécessaires.
-
-Les principaux éléments du rapport sont les suivants :
-- Montant estimé des réparations : 4 500 €
-- Véhicule réparable selon les standards de sécurité
-- Délai estimé de réparation : 7 à 10 jours ouvrés
-
-Nous vous invitons à prendre contact avec le garage de votre choix agréé pour planifier les réparations. N'hésitez pas à nous faire parvenir le devis définitif pour validation.
-
-Pour toute question concernant votre dossier, vous pouvez nous contacter au numéro habituel ou répondre directement à cet email.
-
-Nous restons à votre disposition pour tout complément d'information.
-
-Cordialement,
-
-Service Sinistres
-Votre Compagnie d'Assurance`;
 
   const handleActionClick = (actionId: number) => {
     if (actionId === 1) { // Adresser un mail à l'assuré
@@ -122,20 +121,25 @@ Votre Compagnie d'Assurance`;
                         Modèle généré par l'IA d'après les informations du dossier
                       </div>
                       
-                      {/* Zone Objets */}
+                      {/* Zone Objet - Éditable */}
                       <div className="mb-4">
-                        <h6 className="font-medium text-gray-900 mb-2">Objets</h6>
-                        <div className="bg-white rounded border p-3 text-sm text-gray-700 font-mono">
-                          {emailSubject}
-                        </div>
+                        <h6 className="font-medium text-gray-900 mb-2">Objet</h6>
+                        <Input 
+                          value={emailSubject}
+                          onChange={(e) => setEmailSubject(e.target.value)}
+                          className="text-sm"
+                        />
                       </div>
                       
-                      {/* Zone Contenu du mail */}
+                      {/* Zone Contenu du mail - Éditable */}
                       <div className="mb-4">
                         <h6 className="font-medium text-gray-900 mb-2">Contenu du mail</h6>
-                        <div className="bg-white rounded border p-4 text-sm text-gray-700 whitespace-pre-line font-mono">
-                          {emailContent}
-                        </div>
+                        <Textarea 
+                          value={emailContent}
+                          onChange={(e) => setEmailContent(e.target.value)}
+                          rows={12}
+                          className="text-sm font-mono"
+                        />
                       </div>
                       
                       <div className="flex justify-end mt-3">
