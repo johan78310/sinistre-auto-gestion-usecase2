@@ -60,12 +60,7 @@ export const CriticalityIndicator = ({ level }: CriticalityIndicatorProps) => {
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center text-lg">
           <span className="text-2xl mr-3">{config.emoji}</span>
-          {level === "orange" ? (
-            <TrafficLight activeColor="orange" />
-          ) : (
-            IconComponent && <IconComponent className={`w-5 h-5 mr-2 ${config.color}`} />
-          )}
-          <span className="ml-2">Niveau de Criticité</span>
+          {level !== "orange" && IconComponent && <IconComponent className={`w-5 h-5 mr-2 ${config.color}`} />}
         </CardTitle>
       </CardHeader>
       <CardContent>
