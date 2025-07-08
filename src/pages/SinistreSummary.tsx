@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -11,7 +10,7 @@ import { EventTimeline } from "@/components/sinistre/EventTimeline";
 import { NextBestActions } from "@/components/sinistre/NextBestActions";
 import { DossierChat } from "@/components/sinistre/DossierChat";
 import { DocumentsDossier } from "@/components/sinistre/DocumentsDossier";
-import { Car, User, FileText, Calendar, Megaphone, Home, ExternalLink, ChevronDown, ChevronRight, Users } from "lucide-react";
+import { Car, User, FileText, Calendar, Megaphone, Home, ExternalLink, ChevronDown, ChevronRight, Users, Paperclip } from "lucide-react";
 
 const SinistreSummary = () => {
   const [showNotifications, setShowNotifications] = useState(false);
@@ -231,6 +230,15 @@ const SinistreSummary = () => {
                     <p><span className="font-medium">Dernière mise à jour:</span> 20/05/25 par Compagnie</p>
                     <p><span className="font-medium">Délégation CSE Sinistres:</span> oui</p>
                     <p><span className="font-medium">Option zéro papier activée:</span> 3 contrats</p>
+                    <p className="flex items-center pt-2 border-t">
+                      <Paperclip className="w-4 h-4 mr-2 text-gray-600" />
+                      <span className="font-medium">Pièces administratives :</span>
+                      <span className="ml-1">0 pièce (</span>
+                      <Button variant="link" className="p-0 h-auto text-blue-600 hover:text-blue-800 text-sm">
+                        0 pièce est cliquable
+                      </Button>
+                      <span>)</span>
+                    </p>
                   </div>
                 </CardContent>
               )}
