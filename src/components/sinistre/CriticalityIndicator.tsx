@@ -8,7 +8,7 @@ interface CriticalityIndicatorProps {
 
 const TrafficLight = ({ activeColor }: { activeColor: "green" | "orange" | "red" }) => {
   return (
-    <div className="flex flex-col items-center space-y-1 bg-gray-800 rounded-lg p-2">
+    <div className="flex items-center space-x-1 bg-gray-800 rounded-lg p-2">
       <div className={`w-3 h-3 rounded-full ${activeColor === 'red' ? 'bg-red-500' : 'bg-gray-600'}`}></div>
       <div className={`w-3 h-3 rounded-full ${activeColor === 'orange' ? 'bg-orange-500' : 'bg-gray-600'}`}></div>
       <div className={`w-3 h-3 rounded-full ${activeColor === 'green' ? 'bg-green-500' : 'bg-gray-600'}`}></div>
@@ -35,7 +35,7 @@ export const CriticalityIndicator = ({ level }: CriticalityIndicatorProps) => {
           color: "text-orange-600",
           bgColor: "bg-orange-50",
           borderColor: "border-orange-200",
-          emoji: "🟠",
+          emoji: "",
           title: "Risque détecté",
           description: "Plusieurs manquements ont été identifiés entre les délais d'expertises et la fin des réparations"
         };
@@ -70,9 +70,18 @@ export const CriticalityIndicator = ({ level }: CriticalityIndicatorProps) => {
       </CardHeader>
       <CardContent>
         <div className="space-y-2">
-          <h3 className={`text-xl font-bold ${config.color}`}>
-            {config.title}
-          </h3>
+          {level === "orange" ? (
+            <div className="flex items-center space-x-3">
+              <TrafficLight activeColor="orange" />
+              <h3 className={`text-xl font-bold ${config.color}`}>
+                {config.title}
+              </h3>
+            </div>
+          ) : (
+            <h3 className={`text-xl font-bold ${config.color}`}>
+              {config.title}
+            </h3>
+          )}
           <p className="text-gray-700">
             {config.description}
           </p>
