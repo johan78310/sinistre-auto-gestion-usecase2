@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,7 +11,7 @@ import { EventTimeline } from "@/components/sinistre/EventTimeline";
 import { NextBestActions } from "@/components/sinistre/NextBestActions";
 import { DossierChat } from "@/components/sinistre/DossierChat";
 import { DocumentsDossier } from "@/components/sinistre/DocumentsDossier";
-import { Car, User, FileText, Calendar, Megaphone, Home, ExternalLink, ChevronDown, ChevronRight, Users, Paperclip } from "lucide-react";
+import { Car, User, FileText, Calendar, Megaphone, Home, ExternalLink, ChevronDown, ChevronRight, Users, Paperclip, Factory } from "lucide-react";
 
 const SinistreSummary = () => {
   const [showNotifications, setShowNotifications] = useState(false);
@@ -200,7 +201,7 @@ const SinistreSummary = () => {
                 <div className="flex items-center justify-between">
                   <CardTitle className="flex items-center text-lg font-semibold text-gray-800">
                     <Megaphone className="w-5 h-5 mr-2 text-purple-600" />
-                    Notifications et Informations Client
+                    Notifications et Relations
                   </CardTitle>
                   <Button
                     variant="ghost"
@@ -239,6 +240,23 @@ const SinistreSummary = () => {
                       </Button>
                       <span>)</span>
                     </p>
+                    
+                    {/* Zone Relations */}
+                    <div className="pt-4 border-t">
+                      <h4 className="font-medium text-gray-800 mb-3">Relations</h4>
+                      <div className="space-y-2">
+                        <p><span className="font-medium">Foyer :</span> (0)</p>
+                        <p className="flex items-start">
+                          <span className="font-medium">Décisionnel du Foyer :</span>
+                          <span className="ml-1">(1) :</span>
+                          <Factory className="w-4 h-4 mx-2 text-gray-600 mt-0.5" />
+                          <Button variant="link" className="p-0 h-auto text-blue-600 hover:text-blue-800 text-sm">
+                            Suzanne LANDO
+                          </Button>
+                          <span className="ml-1">est l'affaire personnelle de M Marc Dubois</span>
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </CardContent>
               )}
