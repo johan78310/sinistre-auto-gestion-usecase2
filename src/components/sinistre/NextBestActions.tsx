@@ -22,7 +22,7 @@ Je reste bien entendu à votre écoute pour répondre à vos questions.
 Avec toute notre attention.
 
 Hugo G.
-Votre Conseiller AXA`);
+Votre Conseiller`);
 
   const actions = [
     {
