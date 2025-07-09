@@ -21,7 +21,7 @@ Je reste bien entendu à votre écoute pour répondre à vos questions.
 
 Avec toute notre attention.
 
-Hugo GRANGE
+Hugo G.
 Votre Conseiller AXA`);
 
   const actions = [
