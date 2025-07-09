@@ -5,7 +5,7 @@ export const Header = () => {
       <div className="max-w-7xl mx-auto flex items-center">
         <div className="flex items-center space-x-2">
           <div>
-            <h1 className="text-xl font-bold text-gray-900">AXA Assurance</h1>
+            <h1 className="text-xl font-bold text-gray-900">Synthèse IA</h1>
             <p className="text-sm text-gray-600">Gestion des sinistres automobile</p>
           </div>
         </div>
